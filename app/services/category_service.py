@@ -23,4 +23,8 @@ class CategoryService:
                 detail = f"Category with id {category_id} not found"
             )
         return CategoryResponse.model_validate(category)
+
+    def create_category(self, category_data: CategoryCreate) -> CategoryResponse:
+        category = self.repository.create(category_data)
+        return CategoryResponse.model_validate(category)
     
